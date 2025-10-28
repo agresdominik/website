@@ -1,0 +1,36 @@
+baseURL = 'https://agres.online/'
+languageCode = 'en-us'
+title = 'agres.online'
+
+[params]
+    name = "Dominik Agreš"
+    email = "dominik@agres.online"
+    github = "https://github.com/agresdominik"
+    linkedin = "www.linkedin.com/in/dominik-agres"
+    browserTitle = "agres"
+
+[markup.goldmark.renderer]
+    unsafe = true
+
+[markup]
+    [markup.highlight]
+        codeFences = true
+        guessSyntax = false
+        lineNos = false
+        lineNumbersInTable = true
+        noClasses = false
+        style = "dracula"
+
+[languages]
+    [languages.de]
+    languageCode = 'de-DE'
+    languageName = 'Deutsch'
+    weight = 2
+    [languages.de.params]
+        reading_speed = 179
+    [languages.en]
+    languageCode = 'en-US'
+    languageName = 'English'
+    weight = 1
+    [languages.en.params]
+        reading_speed = 228

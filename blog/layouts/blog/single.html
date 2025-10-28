@@ -1,0 +1,13 @@
+{{ define "main" }}
+
+<article>
+
+    <h1>{{ .Title }}</h1>
+
+    {{ partial "infobox.html" . }}
+
+    {{ .Content }}
+
+</article>
+
+{{ end }}

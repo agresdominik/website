@@ -1,0 +1,11 @@
+<footer class="bottombar">
+  <div class="bottombar-content">
+      <nav class="footer-links">
+        <a href="/impressum/">Impressum</a> ·
+        <a href="/datenschutz/">Datenschutz</a> ·
+        <a href="mailto:{{ .Site.Params.email}}">Email</a>
+        <a href="/publickey.asc">PGP-Key</a>
+      </nav>
+      <div class="copyright">© {{ now.Format "2006" }} {{ .Site.Params.name | default "Your Name" }}</div>
+  </div>
+</footer>

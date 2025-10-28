@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta name="generator" content="Hugo 0.152.2"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <meta charset="UTF-8">
+    <title> agres :: agres.online </title>
+</head>
+
+<body>
+
+    <header class="topbar">
+    <div class="topbar-content">
+    <em>
+        <a href="/" class="site-title">
+            agres.online
+        </a>
+    </em>
+        <nav class="nav-links">
+            <a href="/blog/">~/blog</a>
+            <a href="/whoami/">~/whoami</a>
+        </nav>
+  </div>
+</header>
+
+
+    <main>
+        
+
+  
+    <h1 id="typedText" data-text="Test"></h1>
+<p>Links</p>
+<ul>
+<li><a href="https://github.com/agresdominik">github</a></li>
+</ul>
+
+    <style>
+#typedText::after {
+  content: "|";
+  animation: blink 0.7s infinite;
+}
+@keyframes blink {
+  50% { opacity: 0; }
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const text = "Willkommen"; 
+    const element = document.getElementById("typedText");
+    let index = 0;
+
+    function type() {
+        if (index < text.length) {
+            element.textContent += text.charAt(index);
+            index++;
+            setTimeout(type, 120); 
+        }
+    }
+
+    type();
+});
+</script>
+
+  
+
+
+    </main>
+
+    <footer class="bottombar">
+  <div class="bottombar-content">
+      <nav class="footer-links">
+        <a href="/impressum/">Impressum</a> ·
+        <a href="/datenschutz/">Datenschutz</a> ·
+        <a href="mailto:dominik@agres.online">Email</a>
+        <a href="/publickey.asc">PGP-Key</a>
+      </nav>
+      <div class="copyright">© 2025 Dominik Agreš</div>
+  </div>
+</footer>
+
+
+</body>
+
+</html>

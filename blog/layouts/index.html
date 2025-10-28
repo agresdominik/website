@@ -1,0 +1,8 @@
+{{ define "main" }}
+
+  {{ with .Site.GetPage "page" "home" }}
+    {{ .Content }}
+    {{ partial "typed.html" . }}
+  {{ end }}
+
+{{ end }}

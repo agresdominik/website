@@ -1,0 +1,27 @@
+<style>
+#typedText::after {
+  content: "|";
+  animation: blink 0.7s infinite;
+}
+@keyframes blink {
+  50% { opacity: 0; }
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const text = "{{ .Title }}"; // dynamically type the page title
+    const element = document.getElementById("typedText");
+    let index = 0;
+
+    function type() {
+        if (index < text.length) {
+            element.textContent += text.charAt(index);
+            index++;
+            setTimeout(type, 120); // typing speed in ms
+        }
+    }
+
+    type();
+});
+</script>

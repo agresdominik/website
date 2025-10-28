@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <meta charset="UTF-8">
+    <title> {{ .Site.Params.browserTitle }} :: {{ .Title }} </title>
+</head>
+
+<body>
+
+    {{ partial "topbar.html" . }}
+
+    <main>
+        {{ block "main" . }}{{ end }}
+    </main>
+
+    {{ partial "bottombar.html" . }}
+
+</body>
+
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <meta charset="UTF-8">
+    <title> agres :: Bruteforce Analysis </title>
+</head>
+
+<body>
+
+    <header class="topbar">
+    <div class="topbar-content">
+    <em>
+        <a href="/" class="site-title">
+            agres.online
+        </a>
+    </em>
+        <nav class="nav-links">
+            <a href="/blog/">~/blog</a>
+            <a href="/whoami/">~/whoami</a>
+        </nav>
+  </div>
+</header>
+
+
+    <main>
+        
+
+<article>
+
+    <h1>Bruteforce Analysis</h1>
+
+        <div class="infobox">
+        <div class="infobox-content">
+            <span class="infobox-label">Date Published:</span>
+            <span class="infobox-value">October 25, 2025</span>
+        </div>
+        <div class="infobox-content">
+            <span class="infobox-label">Read time: </span>
+            <span class="infobox-value"> 7 minute(s)</span>
+        </div>
+    </div>
+
+
+    <h1 id="introduction">Introduction</h1>
+<p>Recently I set up this Website as a small side Project in order to learn a little bit of HTML, CSS and the use of static site generators. In order to host this website I used my VPS I own on <a href="https://www.ionos.de/">IONOS</a>. As someone who has spent a lot of time in the Cybersecurity world, I gave my best to secure the VPS as well as possible. Login via SSH is enabled only via Private/Public Key Authentification and <a href="https://github.com/fail2ban/fail2ban">Fail2Ban</a> is setup to ban anyone who tries to login more than 5 Times. Once this was setup I created a way to &ldquo;pull&rdquo; the logs from nginx and fail2ban onto my private ProxMox server and Process these into Grafana. As I was doing this, I noticed that the fail2ban logfile has over 31.000 rows. Nothing suspicious for a public IP Adress, yet a interesting amount of data.</p>
+<p>After getting my hands on these files I decided that I will try to parse and analyse these brutefore attacks. Furthermore this will be written in go, because I am trying to hone my skills in it and it allows us to write extremely efficient, fast and lightweight code.</p>
+<h1 id="data">Data</h1>
+<p>The dataset (fail2ban.log file) consists of relatively simple and understandable logs. Here is a snippet of the average log section:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">// I will not be exposing the IP addresses for obvious reasons
+</span></span><span class="line"><span class="cl">2025-10-25 17:04:35,850 fail2ban.filter         [77278]: INFO    [sshd] Found xxx.xxx.xxx.xxx - 2025-10-25 17:04:35
+</span></span><span class="line"><span class="cl">2025-10-25 17:04:36,414 fail2ban.actions        [77278]: WARNING [sshd] xxx.xxx.xxx.xxx already banned
+</span></span><span class="line"><span class="cl">2025-10-25 17:04:37,099 fail2ban.filter         [77278]: INFO    [sshd] Found xxx.xxx.xxx.xxx - 2025-10-25 17:04:36
+</span></span><span class="line"><span class="cl">2025-10-25 17:04:40,100 fail2ban.filter         [77278]: INFO    [sshd] Found xxx.xxx.xxx.xxx - 2025-10-25 17:04:39
+</span></span><span class="line"><span class="cl">2025-10-25 17:04:40,420 fail2ban.actions        [77278]: NOTICE  [sshd] Ban xxx.xxx.xxx.xxx
+</span></span></code></pre></div><p>There are also some error entries in the log file which are not clearly labeled, although not as important for the data analasys part, need to be considered when parsing:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">2025-10-25 17:04:40,426 fail2ban.utils          [77278]: ERROR   7f57b0136b10 -- exec: { iptables -w -C f2b-sshd -j RETURN &gt;/dev/null 2&gt;&amp;1; } || { iptables -w -N f2b-sshd || true; iptables -w -A f2b-sshd -j RETURN; }
+</span></span><span class="line"><span class="cl">for proto in $(echo &#39;tcp&#39; | sed &#39;s/,/ /g&#39;); do
+</span></span><span class="line"><span class="cl">{ iptables -w -C INPUT -p $proto -m multiport --dports 22  # or your custom SSH port -j f2b-sshd &gt;/dev/null 2&gt;&amp;1; } || { iptables -w -I INPUT -p $proto -m multiport --dports 22  # or your custom SSH port -j f2b-sshd; }
+</span></span><span class="line"><span class="cl">done
+</span></span></code></pre></div><h1 id="implementation">Implementation</h1>
+<p>The following will be seperated into three sections: Parsing, Data Collection and Visualisation</p>
+<h2 id="parsing--regex">Parsing &amp; Regex</h2>
+<p>I decided the most simple way to go forward is to save the logs into a JSON file, with an object for each log entry. This simplifies the writing and reading of the same file in the future. In go we do this by defining a struct with tags for how the JSON structure will look like in the future:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">type</span><span class="w"> </span><span class="nx">Logs</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nx">Timestamp</span><span class="w"> </span><span class="kt">string</span><span class="w">  </span><span class="s">`json:&#34;timestamp&#34;`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nx">Handler</span><span class="w">   </span><span class="kt">string</span><span class="w">  </span><span class="s">`json:&#34;handler&#34;`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nx">Level</span><span class="w">     </span><span class="kt">string</span><span class="w">  </span><span class="s">`json:&#34;level&#34;`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nx">Source</span><span class="w">    </span><span class="kt">string</span><span class="w">  </span><span class="s">`json:&#34;source&#34;`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nx">IpAdress</span><span class="w">  </span><span class="kt">string</span><span class="w">  </span><span class="s">`json:&#34;ipAdress&#34;`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nx">Message</span><span class="w">   </span><span class="kt">string</span><span class="w">  </span><span class="s">`json:&#34;message&#34;`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>These are the key value fields we will want to fill with the information from the log file. The log file is read with golangs <code>os</code> and <code>bufio</code> packages. With these we open the log file and pass it to a scanner instance. The scanner then gives us a multitude of functions to handle the reading of the file.
+The most simple way is to create a for loop like this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="k">for</span><span class="w"> </span><span class="nx">scanner</span><span class="p">.</span><span class="nf">Scan</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nx">line</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">scanner</span><span class="p">.</span><span class="nf">Text</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="o">...</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>This ensures that in each iteration of the loop, the <code>line</code> variable is given the next row until none are available. <code>line</code> now contains a row from the log file.
+Now comes the parsing. I have decided that I hate myself and that I will use Regex Expressions in order to find and extract the usual values in the fail2ban logs. For this I defined a Regex Expression for each of the above mentioned json tags, these being<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="c1">// For (probably much) better efficency these expressions can be grouped into one large expression with maching groups for each field.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// Because I do not like Regex, I will not do this.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nx">dateRegex</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">regexp</span><span class="p">.</span><span class="nf">Compile</span><span class="p">(</span><span class="s">`\d{4}-\d{2}-\d{2}`</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nx">handlerRegex</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">regexp</span><span class="p">.</span><span class="nf">Compile</span><span class="p">(</span><span class="s">`fail2ban\.\w+`</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nx">ipRegex</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">regexp</span><span class="p">.</span><span class="nf">Compile</span><span class="p">(</span><span class="s">`(\b25[0-5]|\b2[0-4][0-9]|\b[01]?[0-9][0-9]?)(\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}`</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nx">levelRegex</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">regexp</span><span class="p">.</span><span class="nf">Compile</span><span class="p">(</span><span class="s">`\s*(?:[A-Z]+)\s+`</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nx">serviceRegex</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">regexp</span><span class="p">.</span><span class="nf">Compile</span><span class="p">(</span><span class="s">`\s*(?:\[[a-z]+\])\s+`</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nx">actionRegex</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">regexp</span><span class="p">.</span><span class="nf">Compile</span><span class="p">(</span><span class="s">`(Found|already banned|Ban|Unban)`</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></div><p>In theory this ruleset applied on the <code>line</code> variable should extract values like this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">2025-10-25 17:04:35,850 fail2ban.filter         [77278]: INFO    [sshd] Found xxx.xxx.xxx.xxx - 2025-10-25 17:04:35
+</span></span><span class="line"><span class="cl">[       dateRegex      ][ handlerRegex ]         [levelRegex][serviceRegex][actionRegex][ipRegex]
+</span></span></code></pre></div><p>And therefore export it into a clean json:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="err">...</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">   <span class="nt">&#34;timestamp&#34;</span><span class="p">:</span> <span class="s2">&#34;2025-10-25 17:04:35,850&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">   <span class="nt">&#34;handler&#34;</span><span class="p">:</span> <span class="s2">&#34;fail2ban.filter&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">   <span class="nt">&#34;level&#34;</span><span class="p">:</span> <span class="s2">&#34;INFO&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">   <span class="nt">&#34;source&#34;</span><span class="p">:</span> <span class="s2">&#34;[sshd]&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">   <span class="nt">&#34;ipAdress&#34;</span><span class="p">:</span> <span class="s2">&#34;xxx.xxx.xxx.xxx&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">   <span class="nt">&#34;message&#34;</span><span class="p">:</span> <span class="s2">&#34;Found&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="err">...</span>
+</span></span></code></pre></div><p>While writing, rewriting and fixing my code I also kept an eye on performace. I wrapped my parser function call in two <code>time.Now().UnixMilli()</code> in order to calculate how long it would take to parse the 31.456 lines. My best result floated around <code>580 ms</code> which means my code can appropox. parse 55.000 rows in one second or given the file is 3.6MB it can parse appropox. 6.2MB per second in one stream. (Your results may vary, depending on harddrive, single core cpu performance etc.)</p>
+<p>And there we go, I have written a very simple fail2ban log to json parser. From now on it gets easier (and more performant).</p>
+<h2 id="analysing">Analysing</h2>
+<p>In order to analyse the data we have collected, I will read our json file containing all the logs and creating a new file which aggregates the different log messages by IP Adress. This means we will create a new struct which looks like this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="kd">type</span><span class="w"> </span><span class="nx">StatsByIp</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nx">IpAdress</span><span class="w">       </span><span class="kt">string</span><span class="w">  </span><span class="s">`json:&#34;ipAdress&#34;`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nx">TotalLogs</span><span class="w">      </span><span class="kt">int</span><span class="w">     </span><span class="s">`json:&#34;totalLogs&#34;`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nx">TotalFound</span><span class="w">     </span><span class="kt">int</span><span class="w">     </span><span class="s">`json:&#34;totalFound&#34;`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nx">TotalBanned</span><span class="w">    </span><span class="kt">int</span><span class="w">     </span><span class="s">`json:&#34;totalBanned&#34;`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nx">TotalUnbanned</span><span class="w">  </span><span class="kt">int</span><span class="w">     </span><span class="s">`json:&#34;totalUnbanned&#34;`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nx">Country</span><span class="w">        </span><span class="kt">string</span><span class="w">  </span><span class="s">`json:&#34;county&#34;`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p><em>Note: If you ever use golangs <code>encoding/json</code> to handle Marshalling and Unmarshalling of the Json files yourself, note that you <strong>need</strong> to name your variables with Uppercase Letters. Go uses Uppercase/Lowercase to deistinguish if your variable or function are public or private. Naming only the struct with Uppercase is not enough and if you do not do this, the inbuilt <code>json.Marshall()</code> and <code>json.Unmarshall</code> functions will not work, as well as some other quirks if you use external functions and pointers.</em></p>
+<p>Once these values have been aggregated by IP Adress, we can see how often which IP has failed to auth on our SSH server and how often it has been Banned and Unbanned.</p>
+<p>For extra information I have implemented a simple script to query the source country of the IP Adress. This is done easily with public apis like <a href="https://www.ipaddress.com/apis/ip-to-country-api">ipadress.com</a>. Althogh this is nice information to have, it is not 100% correct, as IP adresses change and on the day we query it does not have to belong to the same user 10 or more days ago when the log found it.</p>
+<h2 id="visualising">Visualising</h2>
+<p>I am a big sucker for Data Science and have used Python for most of my time Developing &ldquo;Software&rdquo;. The first tool which comes to mind when thinking of visualising data is pythons matplotlib. I have used this in any Data Science adjecent project, all through to my Bachelors Thesis. Therefore I was happy to find out go had a similar package out there. For this I have used <a href="https://github.com/gonum/plot">gonum/plot</a>. With it I created a simple wrapper function for creating bar plots, and collected all relevant data from our analytics steps. The results were the following:</p>
+<h1 id="post-scriptum">Post Scriptum</h1>
+<p>No text, images, code, concepts or ideas were created with Slop Generators<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>. Although I do not belive that Slop Generators are inherently bad nor do I belive that they cannot be used in a poductive matter (as do I in some cases), evrything I write on here are things which geniunly interest me and I want to create and work on by myself. I belive a person can only become better at the thing they are doing if they do not constantly search for instant gratification, which is often given to one when using Slop Generators.</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p><a href="https://ihateregex.io/expr/ip/">Thanks to ihateregex.io</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p><a href="https://asahilinux.org/docs/project/policies/slop/">Slop Generators</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+
+</article>
+
+
+    </main>
+
+    <footer class="bottombar">
+  <div class="bottombar-content">
+      <nav class="footer-links">
+        <a href="/impressum/">Impressum</a> ·
+        <a href="/datenschutz/">Datenschutz</a> ·
+        <a href="mailto:dominik@agres.online">Email</a>
+        <a href="/publickey.asc">PGP-Key</a>
+      </nav>
+      <div class="copyright">© 2025 Dominik Agreš</div>
+  </div>
+</footer>
+
+
+</body>
+
+</html>

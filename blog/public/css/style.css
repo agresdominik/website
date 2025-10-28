@@ -1,0 +1,224 @@
+/* ---------- Base ---------- */
+:root {
+  --color-bg: #111;
+  --color-fg: #fafafa;
+  --color-accent: #222;
+
+  --light-yellow: color(display-p3 1 1 0.7)
+
+  --link: #fff;
+  --link-hover: color(display-p3 1 1 0.7);
+
+  --font-base: 'Inter', sans-serif;
+  --font-weight-regular: 400;
+  --font-weight-bold: 600;
+
+  --max-width: 700px;
+  --padding-page: 1rem;
+
+  font-feature-settings: 'liga' 1, 'calt' 1;
+  font-size: 11pt;
+}
+
+html, body {
+  margin: 0;
+  padding: var(--padding-page);
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-base);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.6;
+  max-width: var(--max-width);
+  margin-inline: auto;
+}
+
+/* ---------- Typography ---------- */
+main h1, main h2, main h3, main h4 {
+  color: var(--color-fg);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.8;
+  display: inline;
+  background-image: linear-gradient(120deg, #355c48 0%, #5f8261 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 0.6em;
+  background-position: 0 88%;
+  transition: background-size 0.5s ease;
+}
+
+a {
+  color: var(--link);
+  text-decoration: underline;
+  transition: color 0.1s ease;
+}
+
+a:hover {
+  color: var(--link-hover);
+  text-decoration: underline;
+  transition: color 0.1s ease;
+}
+
+p {
+  text-align: justify;
+  text-justify: inter-word;
+  margin: 1rem 0;
+}
+
+/* ---------- Top Bar ---------- */
+.topbar {
+  background: var(--color-bg);
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  border-bottom: 3px solid var(--color-accent);
+}
+
+.topbar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.site-title {
+  font-size: 1.2rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--link);
+  text-decoration: none;
+}
+
+.site-title:hover {
+  color:var(--link-hover);
+}
+
+.nav-links a {
+  color: var(--link);
+  margin-left: 1rem;
+  text-decoration: none;
+}
+
+.nav-links a:hover {
+  color:var(--link-hover);
+  text-decoration: underline;
+}
+
+/* ---------- Bottom Bar ---------- */
+.bottombar {
+  background: var(--color-bg);
+  width: 100%;
+  border-top: 3px solid var(--color-accent);
+  padding: 0.75rem 1.5rem;
+  text-align: center;
+  box-shadow: 0 -1px 3px rgba(0,0,0,0.5);
+}
+
+.bottombar-content {
+  max-width: 900px;   /* same as .topbar-content */
+  margin: 0 auto;
+}
+
+.bottombar a {
+  color: var(--link);
+  margin: 0 0.5rem;
+}
+
+.bottombar a:hover {
+  color: var(--link-hover);
+}
+
+/* ---------- Content ---------- */
+main {
+  padding-left: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+article {
+  margin-bottom: 2rem;
+}
+
+ul, ol {
+  list-style: none;
+  padding-left: 0.1rem;
+}
+
+li {
+  margin-bottom: 0.01em;
+}
+
+ul li::before {
+  content: "• ";
+  color: var(--color-fg);
+  font-size: 1.1rem;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ---------- Infobox Styling ---------- */
+
+.infobox {
+    margin: 1rem;
+    padding: 1rem;
+    padding-left: 30px;
+    background-color: var(--color-accent);
+    border: 1.5px solid;
+    border-color: var(--color-fg);
+    border-radius: 10px;
+}
+
+.infobox-content {
+  display: flex;
+  margin: 10px 0;
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  row-gap: 8px;
+}
+
+.infobox-label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.infobox-value {
+    font-style: italic;
+}
+
+
+/* ---------- Responsive Adjustments ---------- */
+@media (max-width: 600px) {
+  body {
+    padding: 5rem 1rem 5rem;
+  }
+
+  .topbar-content {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+/* ---------- Codeblock Styling ---------- */
+pre,
+pre.chroma {
+  background: var(--color-accent);
+  color: var(--color-fg);
+  padding: 1em;
+  border-radius: 0.5rem;
+  overflow-x: scroll;
+}
+
+code {
+  font-family: 'Fira Code', monospace;
+  font-size: 1rem;
+}
+
+.chroma .k  { color: #ff79c6; }  /* Keywords */
+.chroma .s  { color: #f1fa8c; }  /* Strings */
+.chroma .n  { color: #f8f8f2; }  /* Names */
+.chroma .p  { color: #bd93f9; }  /* Punctuation */
+.chroma .c  { color: #6272a4; font-style: italic; } /* Comments */
+.chroma .m  { color: #8be9fd; }  /* Numbers */
+.chroma .o  { color: #ffb86c; }  /* Operators */
+.chroma .err { color: #ff5555; background: #2e2e2e; } /* Errors */

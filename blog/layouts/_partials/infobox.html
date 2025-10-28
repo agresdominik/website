@@ -1,0 +1,10 @@
+    <div class="infobox">
+        <div class="infobox-content">
+            <span class="infobox-label">Date Published:</span>
+            <span class="infobox-value">{{ .Date | time.Format "January 2, 2006" }}</span>
+        </div>
+        <div class="infobox-content">
+            <span class="infobox-label">Read time: </span>
+            <span class="infobox-value">{{ printf " %d minute(s)" .ReadingTime }}</span>
+        </div>
+    </div>
