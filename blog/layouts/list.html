@@ -6,10 +6,11 @@
     {{ range .Pages }}
         <div class="blogpost">
             <div class="blogpost-content">
-                <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-                <span>{{ .Date | time.Format "January 2, 2006" }}</span>
+                <a class="blogpost-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
+                <span class="blogpost-date">{{ .Date | time.Format "January 2, 2006" }}</span>
             </div>
-            <div>
+
+            <div class="blogpost-content">
                 <span>{{ .Description  }}</span>
             </div>
 

@@ -2,7 +2,7 @@
 title: "Bruteforce Analysis"
 draft: true
 date: "2025-10-25"
-description: "Desc"
+description: "Writing a parser for and analysing my VPS servers fail2ban logs."
 ---
 
 # Introduction

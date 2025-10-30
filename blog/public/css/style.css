@@ -192,7 +192,7 @@ img {
 
 .blogpost {
     margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
     padding: 1rem;
     padding-left: 15px;
     background-color: var(--color-accent);
@@ -203,10 +203,22 @@ img {
 
 .blogpost-content {
     display: flex;
+    justify-content: space-between;
     margin: 10px 0;
-    display: grid;
-    grid-template-columns: 450px 1fr;
-    row-gap: 8px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.blogpost-title {
+    font-weight: bold;
+    font-size: 14pt;
+    margin-right: 10px;
+}
+
+.blogpost-date {
+    font-style: italic;
+    font-size: 12pt;
+    margin-right: 10px;
 }
 
 
