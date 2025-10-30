@@ -2,6 +2,8 @@
 title: "Datenschutz"
 ---
 
+<br>
+
 ## Allgemeine Hinweise
 
 Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können. Ausführliche Informationen zum Thema Datenschutz finden Sie in dieser Datenschutzerklärung.

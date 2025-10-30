@@ -1,3 +1,3 @@
 ---
-title: "All Blog Entries"
+title: "Blog"
 ---

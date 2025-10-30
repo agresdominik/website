@@ -2,6 +2,7 @@
 title: "Bruteforce Analysis"
 draft: true
 date: "2025-10-25"
+description: "Desc"
 ---
 
 # Introduction

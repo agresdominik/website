@@ -3,11 +3,13 @@
   --color-bg: #111;
   --color-fg: #fafafa;
   --color-accent: #222;
+  --color-secondary: #355c48;
 
   --light-yellow: color(display-p3 1 1 0.7)
 
   --link: #fff;
-  --link-hover: color(display-p3 1 1 0.7);
+  /*--link-hover: color(display-p3 1 1 0.7);*/
+  --link-hover: #5f8261;
 
   --font-base: 'Inter', sans-serif;
   --font-weight-regular: 400;
@@ -184,6 +186,27 @@ img {
 
 .infobox-value {
     font-style: italic;
+}
+
+/* ---------- Blogpost box Styling ---------- */
+
+.blogpost {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    padding-left: 15px;
+    background-color: var(--color-accent);
+    border: 1.5px solid;
+    border-color: var(--color-secondary);
+    border-radius: 20px;
+}
+
+.blogpost-content {
+    display: flex;
+    margin: 10px 0;
+    display: grid;
+    grid-template-columns: 450px 1fr;
+    row-gap: 8px;
 }
 
 
