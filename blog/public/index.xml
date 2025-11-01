@@ -1,40 +1,31 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>agres.online</title>
-    <link>http://localhost:1313/</link>
-    <description>Recent content on agres.online</description>
-    <generator>Hugo</generator>
-    <language>en-US</language>
-    <lastBuildDate>Sat, 25 Oct 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Bruteforce Analysis</title>
-      <link>http://localhost:1313/blog/bruteforce/</link>
-      <pubDate>Sat, 25 Oct 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/bruteforce/</guid>
-      <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;&#xA;&lt;p&gt;Recently I set up this Website as a small side Project in order to learn a little bit of HTML, CSS and the use of static site generators. In order to host this website I used my VPS I own on &lt;a href=&#34;https://www.ionos.de/&#34;&gt;IONOS&lt;/a&gt;. As someone who has spent a lot of time in the Cybersecurity world, I gave my best to secure the VPS as well as possible. Login via SSH is enabled only via Private/Public Key Authentification and &lt;a href=&#34;https://github.com/fail2ban/fail2ban&#34;&gt;Fail2Ban&lt;/a&gt; is setup to ban anyone who tries to login more than 5 Times. Once this was setup I created a way to &amp;ldquo;pull&amp;rdquo; the logs from nginx and fail2ban onto my private ProxMox server and Process these into Grafana. As I was doing this, I noticed that the fail2ban logfile has over 31.000 rows. Nothing suspicious for a public IP Adress, yet a interesting amount of data.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Datenschutz</title>
-      <link>http://localhost:1313/datenschutz/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/datenschutz/</guid>
-      <description>&lt;br&gt;&#xA;&lt;h2 id=&#34;allgemeine-hinweise&#34;&gt;Allgemeine Hinweise&lt;/h2&gt;&#xA;&lt;p&gt;Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können. Ausführliche Informationen zum Thema Datenschutz finden Sie in dieser Datenschutzerklärung.&lt;/p&gt;&#xA;&lt;h2 id=&#34;datenerfassung&#34;&gt;Datenerfassung&lt;/h2&gt;&#xA;&lt;p&gt;Wer ist verantwortlich für die Datenerfassung? Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten können Sie dem Impressum dieser Website entnehmen.&lt;/p&gt;&#xA;&lt;h2 id=&#34;wie-werden-ihre-daten-erfasst&#34;&gt;Wie werden Ihre Daten erfasst?&lt;/h2&gt;&#xA;&lt;p&gt;Ihre Daten werden zum einen dadurch erhoben, dass Sie mir diese mitteilen (z. B. über eine Kontaktaufnahme per E-Mail).&#xA;Es werden keine technischen Daten gespeichert und erfasst (z.B. Internetbrowser, Betriebssystem IP-Adresse oder Uhrzeit), da die Protokollierung deaktiviert ist.&#xA;Wofür nutzen wir Ihre Daten? Die von Ihnen übermittelten Daten (z. B. per E-Mail) werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Impressum</title>
-      <link>http://localhost:1313/impressum/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/impressum/</guid>
-      <description>&lt;br&gt;&#xA;&lt;h2 id=&#34;angaben-gemäß--5-tmg-und--18-mstv&#34;&gt;Angaben gemäß § 5 TMG und § 18 MStV&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Name&lt;/strong&gt; &lt;br&gt;&#xA;Dominik Agreš&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Anschrift&lt;/strong&gt; &lt;br&gt;&#xA;Steigerwaldstraße 30 &lt;br&gt;&#xA;74172 Neckarsulm &lt;br&gt;&#xA;DE&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Kontakt&lt;/strong&gt;&lt;br&gt;&#xA;&lt;a href=&#34;mailto:dominik@agres.online&#34;&gt;dominik@agres.online&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;haftung-für-inhalte&#34;&gt;Haftung für Inhalte&lt;/h2&gt;&#xA;&lt;p&gt;Als Diensteanbieter bin ich gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG bin ich als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werde ich diese Inhalte umgehend entfernen.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Whoami</title>
-      <link>http://localhost:1313/whoami/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/whoami/</guid>
-      <description>&lt;p&gt;Hi, I’m Dominik&lt;/p&gt;&#xA;&lt;p&gt;I’m passionate about technology, software, and cybersecurity.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Studied &lt;strong&gt;Software Engineering&lt;/strong&gt; at &lt;strong&gt;Heilbronn University (HHN)&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;li&gt;Worked at &lt;strong&gt;Schwarz IT&lt;/strong&gt; in a &lt;strong&gt;Cybersecurity&lt;/strong&gt; team during my studies&lt;/li&gt;&#xA;&lt;li&gt;Wrote my Bachelors Thesis about the application of Machine Learning to optimise distinct processes in the Cybersecurity world&lt;/li&gt;&#xA;&lt;li&gt;Love exploring nature, going on hiking trips as well as driving my motorcycle&lt;/li&gt;&#xA;&lt;li&gt;Love reading books about sociology, philosophy and politics&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;books&#34;&gt;Books&lt;/h1&gt;&#xA;&lt;p&gt;Here are some of my favourite books I would recommend to anyone:&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>agres.online</title><link>https://agres.online/</link><description>Recent content on agres.online</description><generator>Hugo</generator><language>en-US</language><lastBuildDate>Mon, 01 Jan 0001 00:00:00 +0000</lastBuildDate><atom:link href="https://agres.online/index.xml" rel="self" type="application/rss+xml"/><item><title>Datenschutz</title><link>https://agres.online/datenschutz/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://agres.online/datenschutz/</guid><description>&lt;br&gt;
+&lt;h2 id="allgemeine-hinweise"&gt;Allgemeine Hinweise&lt;/h2&gt;
+&lt;p&gt;Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können. Ausführliche Informationen zum Thema Datenschutz finden Sie in dieser Datenschutzerklärung.&lt;/p&gt;
+&lt;h2 id="datenerfassung"&gt;Datenerfassung&lt;/h2&gt;
+&lt;p&gt;Wer ist verantwortlich für die Datenerfassung? Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten können Sie dem Impressum dieser Website entnehmen.&lt;/p&gt;
+&lt;h2 id="wie-werden-ihre-daten-erfasst"&gt;Wie werden Ihre Daten erfasst?&lt;/h2&gt;
+&lt;p&gt;Ihre Daten werden zum einen dadurch erhoben, dass Sie mir diese mitteilen (z. B. über eine Kontaktaufnahme per E-Mail).
+Es werden keine technischen Daten gespeichert und erfasst (z.B. Internetbrowser, Betriebssystem IP-Adresse oder Uhrzeit), da die Protokollierung deaktiviert ist.
+Wofür nutzen wir Ihre Daten? Die von Ihnen übermittelten Daten (z. B. per E-Mail) werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet.&lt;/p&gt;</description></item><item><title>Impressum</title><link>https://agres.online/impressum/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://agres.online/impressum/</guid><description>&lt;br&gt;
+&lt;h2 id="angaben-gemäß--5-tmg-und--18-mstv"&gt;Angaben gemäß § 5 TMG und § 18 MStV&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Name&lt;/strong&gt; &lt;br&gt;
+Dominik Agreš&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Anschrift&lt;/strong&gt; &lt;br&gt;
+Steigerwaldstraße 30 &lt;br&gt;
+74172 Neckarsulm &lt;br&gt;
+DE&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Kontakt&lt;/strong&gt;&lt;br&gt;
+&lt;a href="mailto:dominik@agres.online"&gt;dominik@agres.online&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="haftung-für-inhalte"&gt;Haftung für Inhalte&lt;/h2&gt;
+&lt;p&gt;Als Diensteanbieter bin ich gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG bin ich als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werde ich diese Inhalte umgehend entfernen.&lt;/p&gt;</description></item><item><title>Whoami</title><link>https://agres.online/whoami/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://agres.online/whoami/</guid><description>&lt;p&gt;Hi, I’m Dominik&lt;/p&gt;
+&lt;p&gt;I’m passionate about technology, software, and cybersecurity.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Studied &lt;strong&gt;Software Engineering&lt;/strong&gt; at &lt;strong&gt;Heilbronn University (HHN)&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Worked at &lt;strong&gt;Schwarz IT&lt;/strong&gt; in a &lt;strong&gt;Cybersecurity&lt;/strong&gt; team during my studies&lt;/li&gt;
+&lt;li&gt;Wrote my Bachelors Thesis about the application of Machine Learning to optimise distinct processes in the Cybersecurity world&lt;/li&gt;
+&lt;li&gt;Love exploring nature, going on hiking trips as well as driving my motorcycle&lt;/li&gt;
+&lt;li&gt;Love reading books about sociology, philosophy and politics&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1 id="books"&gt;Books&lt;/h1&gt;
+&lt;p&gt;Here are some of my favourite books I would recommend to anyone:&lt;/p&gt;</description></item></channel></rss>
