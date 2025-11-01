@@ -1,7 +1,7 @@
 ## Personal Website
 
-Source code for my personal website. Built with Hugo, minimal black and white design.
-Live: agres.online
+Source code for my personal website. Built with Hugo, minimal black and white design. \
+Live: [agres.online](agres.online)
 
 ## Stack
 
