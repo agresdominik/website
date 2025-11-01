@@ -21,9 +21,6 @@
     <loc>http://localhost:1313/blog/bruteforce/</loc>
     <lastmod>2025-10-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/test/</loc>
-    <lastmod>2025-10-24T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/categories/</loc>
     <xhtml:link
                 rel="alternate"
@@ -53,7 +50,5 @@
                 />
   </url><url>
     <loc>http://localhost:1313/whoami/</loc>
-  </url><url>
-    <loc>http://localhost:1313/home/</loc>
   </url>
 </urlset>

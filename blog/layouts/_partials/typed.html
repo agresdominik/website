@@ -10,7 +10,7 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-    const text = "{{ .Title }}"; // dynamically type the page title
+    const text = "{{ .Site.Params.Greeting }}";
     const element = document.getElementById("typedText");
     let index = 0;
 
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (index < text.length) {
             element.textContent += text.charAt(index);
             index++;
-            setTimeout(type, 120); // typing speed in ms
+            setTimeout(type, 120);
         }
     }
 

@@ -30,10 +30,7 @@
     <main>
         
 
-  
-    <h1 id="typedText" data-text="Test"></h1>
-
-    <style>
+<style>
 #typedText::after {
   content: "|";
   animation: blink 0.7s infinite;
@@ -45,7 +42,7 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-    const text = "Willkommen"; 
+    const text = "Welcome";
     const element = document.getElementById("typedText");
     let index = 0;
 
@@ -53,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (index < text.length) {
             element.textContent += text.charAt(index);
             index++;
-            setTimeout(type, 120); 
+            setTimeout(type, 120);
         }
     }
 
@@ -61,7 +58,21 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 
-  
+
+<div class="landing-welcome">
+    <h1 id="typedText"></h1>
+    <div class="landing-links">
+        
+            <a href="https://github.com/agresdominik" target="_blank">github</a>
+        
+            <a href="https://linkedin.com/in/dominik-agres" target="_blank">linkedin</a>
+        
+            <a href="mailto:dominik@agres.online" target="_blank">email</a>
+        
+            <a href="/publickey.asc" target="_blank">pgp</a>
+        
+    </div>
+</div>
 
 
     </main>

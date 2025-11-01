@@ -19,7 +19,8 @@
   --padding-page: 1rem;
 
   font-feature-settings: 'liga' 1, 'calt' 1;
-  font-size: 11pt;
+  font-size: 12pt;
+  --font-size-title: 20pt;
 }
 
 html, body {
@@ -82,7 +83,7 @@ p {
 }
 
 .site-title {
-  font-size: 1.2rem;
+  font-size: 18pt;
   font-weight: var(--font-weight-bold);
   color: var(--link);
   text-decoration: none;
@@ -96,6 +97,7 @@ p {
   color: var(--link);
   margin-left: 1rem;
   text-decoration: none;
+  font-size: 14pt;
 }
 
 .nav-links a:hover {
@@ -150,7 +152,6 @@ li {
 ul li::before {
   content: "• ";
   color: var(--color-fg);
-  font-size: 1.1rem;
 }
 
 img {
@@ -211,13 +212,13 @@ img {
 
 .blogpost-title {
     font-weight: bold;
-    font-size: 14pt;
+    font-size: 18pt;
     margin-right: 10px;
 }
 
 .blogpost-date {
     font-style: italic;
-    font-size: 12pt;
+    font-size: 14pt;
     margin-right: 10px;
 }
 
@@ -246,7 +247,7 @@ pre.chroma {
 
 code {
   font-family: 'Fira Code', monospace;
-  font-size: 1rem;
+  font-size: 14px;
 }
 
 .chroma .k  { color: #ff79c6; }  /* Keywords */
@@ -257,3 +258,36 @@ code {
 .chroma .m  { color: #8be9fd; }  /* Numbers */
 .chroma .o  { color: #ffb86c; }  /* Operators */
 .chroma .err { color: #ff5555; background: #2e2e2e; } /* Errors */
+
+/* ---------- Landing Page ---------- */
+
+.landing-welcome {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 70vh;
+}
+
+.landing-welcome h1 {
+    font-size: 2.5rem;
+    /*font-weight: 300;*/
+    margin-bottom: 40px;
+}
+
+.landing-links {
+    display: flex;
+    gap: 30px;
+    font-size: 1.1rem;
+}
+
+.landing-links a {
+    color: var(--link);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.landing-links a:hover {
+    color: var(--color-secondary); /* or whatever your accent color is */
+}

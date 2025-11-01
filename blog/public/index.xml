@@ -34,14 +34,7 @@
       <link>http://localhost:1313/whoami/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/whoami/</guid>
-      <description>&lt;p&gt;Hi, I’m Dominik&lt;/p&gt;&#xA;&lt;p&gt;I’m passionate about technology, software, and cybersecurity.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Studied &lt;strong&gt;Software Engineering&lt;/strong&gt; at &lt;strong&gt;Heilbronn University (HHN)&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;li&gt;Worked at &lt;strong&gt;Schwarz IT&lt;/strong&gt; in a &lt;strong&gt;Cybersecurity&lt;/strong&gt; team during my studies&lt;/li&gt;&#xA;&lt;li&gt;Wrote my Bachelors Thesis about the application of Machine Learning to optimise distinct processes in the Cybersecurity world&lt;/li&gt;&#xA;&lt;li&gt;Love exploring nature, going on hiking trips as well as driving my motorcycle&lt;/li&gt;&#xA;&lt;li&gt;Love reading books about sociology, philosophy and politics&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;books&#34;&gt;Books&lt;/h2&gt;&#xA;&lt;p&gt;Here are some of my favourite books I would recommend to anyone:&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Willkommen</title>
-      <link>http://localhost:1313/home/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/home/</guid>
-      <description>&lt;h1 id=&#34;typedText&#34; data-text=&#34;Test&#34;&gt;&lt;/h1&gt;</description>
+      <description>&lt;p&gt;Hi, I’m Dominik&lt;/p&gt;&#xA;&lt;p&gt;I’m passionate about technology, software, and cybersecurity.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Studied &lt;strong&gt;Software Engineering&lt;/strong&gt; at &lt;strong&gt;Heilbronn University (HHN)&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;li&gt;Worked at &lt;strong&gt;Schwarz IT&lt;/strong&gt; in a &lt;strong&gt;Cybersecurity&lt;/strong&gt; team during my studies&lt;/li&gt;&#xA;&lt;li&gt;Wrote my Bachelors Thesis about the application of Machine Learning to optimise distinct processes in the Cybersecurity world&lt;/li&gt;&#xA;&lt;li&gt;Love exploring nature, going on hiking trips as well as driving my motorcycle&lt;/li&gt;&#xA;&lt;li&gt;Love reading books about sociology, philosophy and politics&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;books&#34;&gt;Books&lt;/h1&gt;&#xA;&lt;p&gt;Here are some of my favourite books I would recommend to anyone:&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

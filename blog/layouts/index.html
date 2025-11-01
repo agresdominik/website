@@ -1,8 +1,14 @@
 {{ define "main" }}
 
-  {{ with .Site.GetPage "page" "home" }}
-    {{ .Content }}
-    {{ partial "typed.html" . }}
-  {{ end }}
+{{ partial "typed.html" . }}
+
+<div class="landing-welcome">
+    <h1 id="typedText"></h1>
+    <div class="landing-links">
+        {{ range .Site.Params.socials }}
+            <a href="{{ .url }}" target="_blank">{{ .name }}</a>
+        {{ end }}
+    </div>
+</div>
 
 {{ end }}

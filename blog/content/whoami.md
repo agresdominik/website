@@ -14,7 +14,7 @@ I’m passionate about technology, software, and cybersecurity.
 
 ---
 
-## Books
+# Books
 
 Here are some of my favourite books I would recommend to anyone:
 
@@ -30,7 +30,7 @@ Reading right now:
 
 ---
 
-## PGP Key
+# PGP Key
 
 If you want to send me encrypted messages use the following [PGP-Key](/publickey.asc). If you want to check the fingerprint:
 

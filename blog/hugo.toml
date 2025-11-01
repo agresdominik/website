@@ -5,9 +5,25 @@ title = 'agres.online'
 [params]
     name = "Dominik Agreš"
     email = "dominik@agres.online"
-    github = "https://github.com/agresdominik"
-    linkedin = "www.linkedin.com/in/dominik-agres"
     browserTitle = "agres"
+    greeting = "Welcome"
+
+    [[params.socials]]
+    name = "github"
+    url = "https://github.com/agresdominik"
+
+    [[params.socials]]
+    name = "linkedin"
+    url = "https://linkedin.com/in/dominik-agres"
+
+    [[params.socials]]
+    name = "email"
+    url = "mailto:dominik@agres.online"
+
+    [[params.socials]]
+    name = "pgp"
+    url = "/publickey.asc"
+
 
 [markup.goldmark.renderer]
     unsafe = true

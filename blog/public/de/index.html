@@ -30,7 +30,49 @@
     <main>
         
 
-  
+<style>
+#typedText::after {
+  content: "|";
+  animation: blink 0.7s infinite;
+}
+@keyframes blink {
+  50% { opacity: 0; }
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const text = "agres.online";
+    const element = document.getElementById("typedText");
+    let index = 0;
+
+    function type() {
+        if (index < text.length) {
+            element.textContent += text.charAt(index);
+            index++;
+            setTimeout(type, 120);
+        }
+    }
+
+    type();
+});
+</script>
+
+
+<div class="landing-welcome">
+    <h1 id="typedText"></h1>
+    <div class="landing-links">
+        
+            <a href="https://github.com/agresdominik" target="_blank">github</a>
+        
+            <a href="https://linkedin.com/in/dominik-agres" target="_blank">linkedin</a>
+        
+            <a href="mailto:dominik@agres.online" target="_blank">email</a>
+        
+            <a href="/publickey.asc" target="_blank">pgp</a>
+        
+    </div>
+</div>
 
 
     </main>
