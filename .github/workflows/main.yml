@@ -1,0 +1,35 @@
+name: Deploy Changes to VPS
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Deploy to VPS
+      uses: appleboy/ssh-action@v0.1.9
+      with:
+        host: ${{ secrets.VPS_HOST }}
+        username: agres
+        key: ${{ secrets.VPS_SSH_KEY }}
+        port: 22
+        script: |
+          # Pull latest changes
+          cd /home/agres/website
+          git pull origin main
+
+          # Copy compiled Hugo site to web root
+          sudo rsync -av --delete --no-group --no-owner /home/agres/website/blog/public/ /var/www/html/
+
+          # Fix permissions
+          sudo chown -R www-data:www-data /var/www/html
+
+          # Reload Nginx
+          sudo systemctl reload nginx
