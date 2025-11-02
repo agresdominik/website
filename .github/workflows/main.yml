@@ -25,6 +25,9 @@ jobs:
           cd /home/agres/website
           git pull origin main
 
+          # Build Project
+          make build
+
           # Copy compiled Hugo site to web root
           sudo rsync -av --delete --no-group --no-owner /home/agres/website/blog/public/ /var/www/html/
 
@@ -33,3 +36,6 @@ jobs:
 
           # Reload Nginx
           sudo systemctl reload nginx
+
+          # Clean
+          make clean
