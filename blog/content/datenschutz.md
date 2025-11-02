@@ -65,7 +65,7 @@ Weitere Informationen entnehmen Sie der Datenschutzerklärung von Strato: https:
 
 ## Quellcode
 
-Das gesamte Quellcode dieser Website kann auf meinem Github-Repository aufgerufen werden unter [https://github.com/agresdominik/blog](https://github.com/agresdominik/blog)
+Das gesamte Quellcode dieser Website kann auf meinem Github-Repository aufgerufen werden unter [github.com](https://github.com/agresdominik/website)
 
 ## Kontaktaufnahme per E-Mail
 
