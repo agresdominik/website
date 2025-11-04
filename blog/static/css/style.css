@@ -283,6 +283,15 @@ code {
   font-size: 14px;
 }
 
+:not(pre) > code {
+  background: var(--color-accent);
+  color: var(--color-fg);
+  padding: 0.15em 0.35em;
+  border-radius: 0.2rem;
+  font-size: 0.9em;
+  white-space: nowrap;
+}
+
 .chroma .k  { color: #ff79c6; }  /* Keywords */
 .chroma .s  { color: #f1fa8c; }  /* Strings */
 .chroma .n  { color: #f8f8f2; }  /* Names */
