@@ -1,0 +1,4 @@
+{{- $level := .Level -}}
+<h{{ $level }} id="{{ .Anchor | safeURL }}">
+  {{ .Text | safeHTML }} <em>{{ range seq $level }}#{{ end }}</em>
+</h{{ $level }}>

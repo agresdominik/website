@@ -37,3 +37,21 @@ If you want to send me encrypted messages use the following [PGP-Key](/publickey
 ```
 896B 3FF1 2E82 A80C 10F6  42CB 4634 761C A7CE E0A
 ```
+
+---
+
+# Resources
+
+[Folding@Home](https://foldingathome.org/) - Use your GPU and CPU to contribute to scientifical research by simulating the folding of proteins on your own device
+
+[Internet Archive](https://archive.org/donate) - Help Internet Archive build and provide a digital library of Internet sites and cultural artifacts in digital form
+
+## FOSS Foundations
+
+[Free Software Foundation](https://www.fsf.org/)
+
+[Mozilla Foundation](https://www.mozillafoundation.org/en/)
+
+[The Linux Foundation](https://www.linuxfoundation.org)
+
+[Signal Foundation](https://signalfoundation.org/)
