@@ -4,6 +4,7 @@
 
 <ul>
     {{ range .Pages }}
+    <hr>
         <div class="blogpost">
             <div class="blogpost-content">
                 <a class="blogpost-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
@@ -15,6 +16,7 @@
             </div>
 
         </div>
+    <hr>
     {{ end }}
 </ul>
 
