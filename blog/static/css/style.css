@@ -1,15 +1,20 @@
 /* ---------- Base ---------- */
 :root {
+    /*
   --color-bg: #111;
   --color-fg: #fafafa;
   --color-accent: #222;
   --color-secondary: #355c48;
-
+*/
+  --color-bg: #13171D;
+  --color-fg: #C3CBCB;
+  --color-accent: #181E25;
+  --color-secondary: #E3511E;
   --light-yellow: color(display-p3 1 1 0.7)
 
   --link: #fff;
   /*--link-hover: color(display-p3 1 1 0.7);*/
-  --link-hover: #5f8261;
+  --link-hover: #E45420;
 
   --font-base: 'Inter', sans-serif;
   --font-weight-regular: 400;
@@ -41,7 +46,7 @@ main h1, main h2, main h3, main h4 {
   font-weight: var(--font-weight-bold);
   line-height: 1.8;
   display: inline;
-  background-image: linear-gradient(120deg, #355c48 0%, #5f8261 100%);
+  /*background-image: linear-gradient(120deg, #E45420 0%, #E87045 100%);*/
   background-repeat: no-repeat;
   background-size: 100% 0.6em;
   background-position: 0 88%;
@@ -71,7 +76,7 @@ p {
   background: var(--color-bg);
   width: 100%;
   padding: 0.75rem 1.5rem;
-  border-bottom: 3px solid var(--color-accent);
+  border-bottom: 3px solid var(--color-secondary);
 }
 
 .topbar-content {
@@ -109,7 +114,7 @@ p {
 .bottombar {
   background: var(--color-bg);
   width: 100%;
-  border-top: 3px solid var(--color-accent);
+  border-top: 3px solid var(--color-secondary);
   padding: 0.75rem 1.5rem;
   text-align: center;
 }
@@ -132,7 +137,7 @@ p {
 main {
   padding-left: 1.5rem;
   margin-top: 2rem;
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
 }
 
 article {
@@ -196,6 +201,9 @@ img {
     padding: 1rem;
     padding-left: 15px;
     background-color: var(--color-accent);
+    border: 1px solid;
+    border-color: var(--color-fg);
+    border-radius: 0px;
 }
 
 .blogpost-content {
