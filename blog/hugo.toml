@@ -50,3 +50,7 @@ title = 'agres.online'
     weight = 1
     [languages.en.params]
         reading_speed = 228
+
+[outputs]
+    home = ["HTML"]
+    section = ["HTML", "RSS"]
