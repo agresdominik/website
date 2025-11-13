@@ -20,7 +20,7 @@
   --font-weight-regular: 400;
   --font-weight-bold: 600;
 
-  --max-width: 700px;
+  --max-width: 70ch;
   --padding-page: 1rem;
 
   font-feature-settings: 'liga' 1, 'calt' 1;
@@ -46,12 +46,12 @@ main h1, main h2, main h3, main h4 {
   font-weight: var(--font-weight-bold);
   line-height: 1.8;
   display: inline;
-  /*background-image: linear-gradient(120deg, #E45420 0%, #E87045 100%);*/
-  background-repeat: no-repeat;
-  background-size: 100% 0.6em;
-  background-position: 0 88%;
-  transition: background-size 0.5s ease;
 }
+
+main h1 { font-size: 1.8rem; }
+main h2 { font-size: 1.6rem; }
+main h3 { font-size: 1.4rem; }
+main h4 { font-size: 1.2rem; }
 
 a {
   color: var(--link);
@@ -296,14 +296,13 @@ code {
   white-space: nowrap;
 }
 
-.chroma .k  { color: #ff79c6; }  /* Keywords */
-.chroma .s  { color: #f1fa8c; }  /* Strings */
-.chroma .n  { color: #f8f8f2; }  /* Names */
-.chroma .p  { color: #bd93f9; }  /* Punctuation */
-.chroma .c  { color: #6272a4; font-style: italic; } /* Comments */
-.chroma .m  { color: #8be9fd; }  /* Numbers */
-.chroma .o  { color: #ffb86c; }  /* Operators */
-.chroma .err { color: #ff5555; background: #2e2e2e; } /* Errors */
+.chroma .k  { color: #ff9349; }
+.chroma .s  { color: #b8e3b7; }
+.chroma .c  { color: #737983; font-style: italic; }
+.chroma .m  { color: #eacaa6; }
+.chroma .o  { color: #e1e5ec; }
+.chroma .kt { color: #9bb8ff; }
+
 
 /* ---------- Landing Page ---------- */
 
@@ -313,13 +312,12 @@ code {
     justify-content: center;
     align-items: center;
     text-align: center;
-    min-height: 70vh;
+    min-height: 55vh;
 }
 
 .landing-welcome h1 {
     font-size: 2.5rem;
-    /*font-weight: 300;*/
-    margin-bottom: 40px;
+    margin-bottom: 25px;
 }
 
 .landing-links {

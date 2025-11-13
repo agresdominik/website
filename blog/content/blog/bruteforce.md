@@ -14,6 +14,7 @@ After getting my hands on these files I decided that I will try to parse and ana
 # Data
 
 The dataset (fail2ban.log file) consists of relatively simple and understandable logs. Here is a snippet of the average log section:
+
 ```txt
 // I will not be exposing the IP addresses for obvious reasons
 2025-10-25 17:04:35,850 fail2ban.filter         [77278]: INFO    [sshd] Found xxx.xxx.xxx.xxx - 2025-10-25 17:04:35
@@ -54,7 +55,7 @@ type Logs struct {
 These are the key value fields we will want to fill with the information from the log file. The log file is read with golangs `os` and `bufio` packages. With these we open the log file and pass it to a scanner instance. The scanner then gives us a multitude of functions to handle the reading of the file.
 The most simple way is to create a for loop like this:
 
-```golang
+```go
 for scanner.Scan() {
 
   line := scanner.Text()
@@ -66,7 +67,7 @@ for scanner.Scan() {
 This ensures that in each iteration of the loop, the `line` variable is given the next row until none are available. `line` now contains a row from the log file.
 Now comes the parsing. I have decided that I hate myself and that I will use Regex Expressions in order to find and extract the usual values in the fail2ban logs. For this I defined a Regex Expression for each of the above mentioned json tags, these being[^2]:
 
-```golang
+```go
 // For (probably much) better efficiency these expressions can be grouped into one large expression with matching groups for each field.
 // Because I do not like Regex, I will not do this.
 dateRegex, _ := regexp.Compile(`\d{4}-\d{2}-\d{2}`)
@@ -106,7 +107,8 @@ And there we go, I have written a very simple fail2ban log to json parser. From 
 ## Analysing
 
 In order to analyse the data we have collected, I will read our json file containing all the logs and creating a new file which aggregates the different log messages by IP Address. This means we will create a new struct which looks like this:
-```golang
+
+```go
 type StatsByIp struct {
 	IpAddress      string  `json:"ipAddress"`
 	TotalLogs      int     `json:"totalLogs"`

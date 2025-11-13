@@ -22,6 +22,8 @@ Welche Rechte haben Sie? Sie haben jederzeit das Recht, unentgeltlich Auskunft √
 
 # Allgemeine Hinweise und Pflichtinformationen
 
+<br>
+
 ## Datenschutz
 
 Ich behandle Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerkl√§rung.

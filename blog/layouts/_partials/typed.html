@@ -1,10 +1,11 @@
 <style>
 #typedText::after {
-  content: "|";
-  animation: blink 0.7s infinite;
+    content: "|";
+    animation: blink 1s infinite;
+    font-weight: bolder;
 }
 @keyframes blink {
-  50% { opacity: 0; }
+  60% { opacity: 0; }
 }
 </style>
 
@@ -18,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (index < text.length) {
             element.textContent += text.charAt(index);
             index++;
-            setTimeout(type, 120);
+            setTimeout(type, 256);
         }
     }
 
