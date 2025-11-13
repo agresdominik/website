@@ -11,6 +11,8 @@ Recently I set up this Website as a small side Project in order to learn a littl
 
 After getting my hands on these files I decided that I will try to parse and analyse these bruteforce attacks. Furthermore this will be written in go, because I am trying to hone my skills in it and it allows us to write extremely efficient, fast and lightweight code.
 
+<!--more-->
+
 # Data
 
 The dataset (fail2ban.log file) consists of relatively simple and understandable logs. Here is a snippet of the average log section:
