@@ -19,14 +19,14 @@ I’m passionate about technology, software, and cybersecurity.
 Here are some of my favourite books I would recommend to anyone:
 
 - [Homo Deus - Yuval Noah Harari](https://search.worldcat.org/title/986950078)
-- [Ikigai - Ken Mogi](https://search.worldcat.org/title/1357534605?oclcNum=1357534605)
+- [Ikigai - Ken Mogi](https://search.worldcat.org/title/1357534605)
 - [Mein Katalonien - George Orwell](https://search.worldcat.org/title/1259326703)
-- [On Anarchism - Noam Chomsky](https://search.worldcat.org/title/872702854?oclcNum=872702854)
+- [On Anarchism - Noam Chomsky](https://search.worldcat.org/title/872702854)
 
 Reading right now:
 
-- [Nexus - Yuval Noah Harari]()
-- [Atomic Habits - James Clear]()
+- [Nexus - Yuval Noah Harari](https://search.worldcat.org/title/1458312575)
+- [Atomic Habits - James Clear](https://search.worldcat.org/title/1111781445)
 
 ---
 
