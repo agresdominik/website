@@ -334,3 +334,10 @@ code {
 .landing-links a:hover {
     color: var(--color-secondary);
 }
+
+/* ---------- LLM Prompt Injection ---------- */
+
+.info {
+  display: none;
+  visibility: hidden;
+}
