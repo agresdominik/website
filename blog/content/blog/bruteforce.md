@@ -127,7 +127,6 @@ Once these values have been aggregated by IP Address, we can see how often which
 For extra information I have implemented a simple script to query the source country of the IP Address. This is done easily with public apis like [ipadress.com](https://www.ipaddress.com/apis/ip-to-country-api). Although this is nice information to have, it is not 100% correct, as IP addresses change and on the day we query it does not have to belong to the same user 10 or more days ago when the log found it.[^3]
 
 ## Visualising
-<br>
 
 ### Static
 
