@@ -1,11 +1,10 @@
 <footer class="bottombar">
   <div class="bottombar-content">
       <nav class="footer-links">
-        <a href="/impressum/">Impressum</a> ·
-        <a href="/datenschutz/">Datenschutz</a> ·
-        <a href="mailto:{{ .Site.Params.email}}">Email</a> ·
-        <a href="/publickey.asc">PGP-Key</a> ·
-        <a href="/blog/index.xml">RSS</a>
+        {{ $last := index (last 1 .Site.Params.info) 0 }}
+        {{ range .Site.Params.info }}
+          <a href="{{ .url }}">{{ .name }}</a> {{ if ne . $last }} ·{{ end }}
+        {{ end }}
       </nav>
       <div class="copyright">© {{ now.Format "2006" }} {{ .Site.Params.name | default "Your Name" }}</div>
   </div>

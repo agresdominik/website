@@ -24,6 +24,25 @@ title = 'agres.online'
     name = "pgp"
     url = "/publickey.asc"
 
+    [[params.info]]
+    name = "Impressum"
+    url = "/impressim"
+
+    [[params.info]]
+    name = "Datenschutz"
+    url = "/datenschutz"
+
+    [[params.info]]
+    name = "Email"
+    url = "mailto:dominik@agres.online"
+
+    [[params.info]]
+    name = "PGP-Key"
+    url = "/publickey.asc"
+
+    [[params.info]]
+    name = "RSS"
+    url = "/blog/index.xml"
 
 [markup.goldmark.renderer]
     unsafe = true
