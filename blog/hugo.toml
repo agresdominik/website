@@ -22,11 +22,11 @@ title = 'agres.online'
 
     [[params.socials]]
     name = "pgp"
-    url = "/publickey.asc"
+    url = "/keys/publickey.asc"
 
     [[params.info]]
     name = "Impressum"
-    url = "/impressim"
+    url = "/impressum"
 
     [[params.info]]
     name = "Datenschutz"
@@ -38,7 +38,7 @@ title = 'agres.online'
 
     [[params.info]]
     name = "PGP-Key"
-    url = "/publickey.asc"
+    url = "/keys/publickey.asc"
 
     [[params.info]]
     name = "RSS"

@@ -32,7 +32,7 @@ Reading right now:
 
 # PGP Key
 
-If you want to send me encrypted messages use the following [PGP-Key](/publickey.asc). If you want to check the fingerprint:
+If you want to send me encrypted messages use the following [PGP-Key](/keys/publickey.asc). If you want to check the fingerprint:
 
 ```
 896B 3FF1 2E82 A80C 10F6  42CB 4634 761C A7CE E0A
