@@ -36,6 +36,9 @@ title = 'agres.online'
         lineNumbersInTable = true
         noClasses = false
         style = "dracula"
+    [markup.goldmark]
+        [markup.goldmark.extensions]
+          footnote = true
 
 [languages]
     [languages.de]

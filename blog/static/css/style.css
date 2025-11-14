@@ -1,11 +1,5 @@
 /* ---------- Base ---------- */
 :root {
-    /*
-  --color-bg: #111;
-  --color-fg: #fafafa;
-  --color-accent: #222;
-  --color-secondary: #355c48;
-*/
   --color-bg: #13171D;
   --color-fg: #C3CBCB;
   --color-accent: #181E25;
@@ -13,7 +7,6 @@
   --light-yellow: color(display-p3 1 1 0.7)
 
   --link: #fff;
-  /*--link-hover: color(display-p3 1 1 0.7);*/
   --link-hover: #E45420;
 
   --font-base: 'Inter', sans-serif;
@@ -167,6 +160,11 @@ img {
   max-width: 100%;
   height: auto;
   display: block;
+}
+
+.footnotes ol {
+  list-style: decimal;
+  margin-left: 1rem;
 }
 
 /* ---------- Infobox Styling ---------- */
