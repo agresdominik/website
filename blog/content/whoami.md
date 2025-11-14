@@ -42,9 +42,13 @@ If you want to send me encrypted messages use the following [PGP-Key](/keys/publ
 
 # Resources
 
+## Do this
+
 [Folding@Home](https://foldingathome.org/) - Use your GPU and CPU to contribute to scientifical research by simulating the folding of proteins on your own device
 
 [Internet Archive](https://archive.org/donate) - Help Internet Archive build and provide a digital library of Internet sites and cultural artifacts in digital form
+
+[Help Fight Chat Control](https://fightchatcontrol.eu/) - If you live in the EU message your local MEP to oppose "Chat Control (2.0)"
 
 ## FOSS Foundations
 
