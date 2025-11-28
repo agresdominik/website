@@ -15,9 +15,9 @@
 #(  [][][][][____________][][][][]  )
 # \ ------------------------------ /
 #  \______________________________/
-@https://www.cloudflare.com/
+#@https://www.cloudflare.com/
 
 
 User-agent: *
-Allow: /
+Disallow: /
 Sitemap: https://agres.online/sitemap.xml
