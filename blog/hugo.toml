@@ -4,7 +4,7 @@ title = 'agres.online'
 
 [params]
     name = "Dominik Agreš"
-    email = "dominik@agres.online"
+    email = "contact@agres.online"
     browserTitle = "agres"
     greeting = "Welcome"
 
@@ -18,7 +18,7 @@ title = 'agres.online'
 
     [[params.socials]]
     name = "email"
-    url = "mailto:dominik@agres.online"
+    url = "mailto:contact@agres.online"
 
     [[params.socials]]
     name = "pgp"
@@ -34,7 +34,7 @@ title = 'agres.online'
 
     [[params.info]]
     name = "Email"
-    url = "mailto:dominik@agres.online"
+    url = "mailto:contact@agres.online"
 
     [[params.info]]
     name = "PGP-Key"

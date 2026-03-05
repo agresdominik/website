@@ -34,7 +34,7 @@ Bitte beachten Sie: Die Datenübertragung im Internet (z. B. bei der Kommunikati
 Dominik Agreš \
 Steigerwaldstraße 30 \
 74172 Neckarsulm \
-dominik@agres.online
+contact@agres.online
 
 ## Speicherdauer
 

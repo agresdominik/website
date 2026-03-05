@@ -19,5 +19,5 @@
 
 
 User-agent: *
-Disallow: /
+Allow: /
 Sitemap: https://agres.online/sitemap.xml
