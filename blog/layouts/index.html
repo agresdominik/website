@@ -1,14 +1,30 @@
 {{ define "main" }}
 
-{{ partial "typed.html" . }}
-
-<div class="landing-welcome">
-    <h1 id="typedText"></h1>
+<section class="landing">
+    <h1 class="landing-name">{{ .Site.Params.name }}</h1>
+    <p class="landing-tagline">{{ i18n "hero_tagline" }}</p>
     <div class="landing-links">
         {{ range .Site.Params.socials }}
-            <a href="{{ .url }}" target="_blank">{{ .name }}</a>
+            <a href="{{ .url }}" target="_blank" rel="noopener">{{ .name }}</a>
         {{ end }}
     </div>
-</div>
+
+    {{ with .Site.GetPage "/blog" }}
+        {{ with first 4 .Pages }}
+            <div class="landing-latest">
+                <h2 class="latest-heading">{{ i18n "latest_writing" }}</h2>
+                <ul class="latest-list">
+                    {{ range . }}
+                        <li>
+                            <a class="latest-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
+                            <span class="latest-date">{{ .Date | time.Format ":date_medium" }}</span>
+                        </li>
+                    {{ end }}
+                </ul>
+                <a class="latest-all" href="{{ "blog/" | relLangURL }}">{{ i18n "all_posts" }}</a>
+            </div>
+        {{ end }}
+    {{ end }}
+</section>
 
 {{ end }}

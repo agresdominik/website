@@ -5,7 +5,7 @@ date: "2025-11-02"
 description: "Writing a parser for and analysing my VPS fail2ban logs"
 ---
 
-# Introduction
+## Introduction
 
 Recently I set up this Website as a small side Project in order to learn a little bit of HTML, CSS and the use of static site generators. In order to host this website I used my VPS I own on [IONOS](https://www.ionos.de/). As someone who has spent a lot of time in the Cybersecurity world, I gave my best to secure the VPS as well as possible. Login via SSH is enabled only via Private/Public Key Authentification and [Fail2Ban](https://github.com/fail2ban/fail2ban) is setup to ban anyone who tries to login more than 5 Times. Once this was setup I created a way to "pull" the logs from nginx and fail2ban onto my private ProxMox server and Process these into Grafana. As I was doing this, I noticed that the fail2ban logfile has over 31.000 rows. Nothing suspicious for a public IP Address, yet a interesting amount of data.
 
@@ -13,7 +13,7 @@ After getting my hands on these files I decided that I will try to parse and ana
 
 <!--more-->
 
-# Data
+## Data
 
 The dataset (fail2ban.log file) consists of relatively simple and understandable logs. Here is a snippet of the average log section:
 
@@ -35,11 +35,11 @@ for proto in $(echo 'tcp' | sed 's/,/ /g'); do
 done
 ```
 
-# Implementation
+## Implementation
 
 The following will be separated into three sections: Parsing, Data Collection and Visualization
 
-## Parsing & Regex
+### Parsing & Regex
 
 I decided the most simple way to go forward is to save the logs into a JSON file, with an object for each log entry. This simplifies the writing and reading of the same file in the future. In go we do this by defining a struct with tags for how the JSON structure will look like in the future:
 
@@ -106,7 +106,7 @@ While writing, rewriting and fixing my code I also kept an eye on performance. I
 
 And there we go, I have written a very simple fail2ban log to json parser. From now on it gets easier (and more performant).
 
-## Analysing
+### Analysing
 
 In order to analyse the data we have collected, I will read our json file containing all the logs and creating a new file which aggregates the different log messages by IP Address. This means we will create a new struct which looks like this:
 
@@ -126,9 +126,9 @@ Once these values have been aggregated by IP Address, we can see how often which
 
 For extra information I have implemented a simple script to query the source country of the IP Address. This is done easily with public apis like [ipadress.com](https://www.ipaddress.com/apis/ip-to-country-api). Although this is nice information to have, it is not 100% correct, as IP addresses change and on the day we query it does not have to belong to the same user 10 or more days ago when the log found it.[^3]
 
-## Visualising
+### Visualising
 
-### Static
+#### Static
 
 I am a big sucker for Data Science and have used Python for most of my time Developing "Software". The first tool which comes to mind when thinking of visualising data is pythons matplotlib. I have used this in all Data Science adjacent project, all through to my Bachelors Thesis. Therefore I was happy to find out go had a similar package out there. For this I have used [gonum/plot](https://github.com/gonum/plot). With it I created a simple wrapper function for creating bar plots, and collected all relevant data from our analytics steps. The most amount of individual IPs comes from China with a total count of 180 Individual IP Addresses. Taking a look at the most amount of bans, the chart looks like this:
 
@@ -136,7 +136,7 @@ I am a big sucker for Data Science and have used Python for most of my time Deve
 
 Interestingly the IPs from Netherlands are leading the race in trying to connect and authentificate on my VPS.
 
-### Dynamic
+#### Dynamic
 
 A few days later I looked at this and decided I want to integrate it into a Dashboard and have my data shown to me live. In order to do this I rewrote the parsing function so that it tracks the last byte it read in the log file. Now I can automate the syncing of the logs from my VPS and running my log parser in a LXC Container in which I deployed Grafana. Through Grafana I setup JSON Files as a Data Source (also needed to set up a simple python http server to serve the parsed json through REST API) and started creating a Dashboard.
 
@@ -144,7 +144,7 @@ A few days later I looked at this and decided I want to integrate it into a Dash
 
 All in all an interesting short project. One day I will give myself the challenge to optimize the code as much as possible.
 
-# Post Scriptum
+## Post Scriptum
 
 No text, images, code, concepts or ideas were created with Slop Generators[^1]. Although I do not believe that Slop Generators are inherently bad nor do I believe that they cannot be used in a productive matter (as do I in some cases), everything I write on here are things which genuinely interest me and I want to create and work on by myself. I believe a person can only become better at the thing they are doing if they do not constantly search for instant gratification, which is often given to one when using Slop Generators.
 

@@ -1,0 +1,20 @@
+[nav_about]
+other = "Über mich"
+
+[hero_tagline]
+other = "Medizinische Informatik · Platform & DevOps · Security"
+
+[latest_writing]
+other = "Neueste Beiträge"
+
+[all_posts]
+other = "alle Beiträge →"
+
+[date_published]
+other = "Veröffentlicht"
+
+[read_time]
+other = "Lesezeit"
+
+[minutes]
+other = "Min"

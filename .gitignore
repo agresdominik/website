@@ -4,5 +4,8 @@ googleeb4005177cc2703c.html
 # public folder
 public/
 
-#
+# hugo build cache
+resources/
+
+# work-in-progress drafts
 tbd*.md
