@@ -1,0 +1,4 @@
+#!/bin/sh
+# Same check as CI: abort the commit if Hugo can't build cleanly.
+make build || exit 1
+make clean
