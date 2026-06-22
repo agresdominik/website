@@ -1,0 +1,22 @@
+name: Build Check
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: "0.152.2"
+          extended: true
+
+      # Fails the run on any Hugo error (broken templates, shortcodes, refs).
+      - run: hugo --gc --minify --panicOnWarning
+        working-directory: blog
