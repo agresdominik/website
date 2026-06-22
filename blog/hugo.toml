@@ -1,6 +1,7 @@
 baseURL = 'https://agres.online/'
 languageCode = 'en-us'
 title = 'agres.online'
+defaultContentLanguage = 'en'
 
 [params]
     name = "Dominik Agreš"
@@ -53,8 +54,8 @@ title = 'agres.online'
         guessSyntax = false
         lineNos = false
         lineNumbersInTable = true
-        noClasses = false
-        style = "dracula"
+        noClasses = true
+        style = "solarized-light"
     [markup.goldmark]
         [markup.goldmark.extensions]
           footnote = true
@@ -66,12 +67,14 @@ title = 'agres.online'
     weight = 2
     [languages.de.params]
         reading_speed = 179
+        greeting = "Willkommen"
     [languages.en]
     languageCode = 'en-US'
     languageName = 'English'
     weight = 1
     [languages.en.params]
         reading_speed = 228
+        greeting = "Welcome"
 
 [outputs]
     home = ["HTML"]

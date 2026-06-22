@@ -2,19 +2,15 @@
 
 <h1>{{ .Title }}</h1>
 
-<ul>
+<ul class="postlist">
     {{ range .Pages }}
-        <div class="blogpost">
-            <div class="blogpost-content">
-                <a class="blogpost-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
-                <span class="blogpost-date">{{ .Date | time.Format "January 2, 2006" }}</span>
+        <li>
+            <div class="post-head">
+                <a class="post-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
+                <span class="post-date">{{ .Date | time.Format ":date_medium" }} · ~{{ .ReadingTime }} {{ i18n "minutes" }}</span>
             </div>
-
-            <div class="blogpost-content">
-                <span>{{ .Description  }}</span>
-            </div>
-
-        </div>
+            {{ with .Description }}<p class="post-desc">{{ . }}</p>{{ end }}
+        </li>
     {{ end }}
 </ul>
 

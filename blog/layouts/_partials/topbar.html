@@ -1,13 +1,12 @@
 <header class="topbar">
     <div class="topbar-content">
-    <em>
-        <a href="{{ "/" | relURL }}" class="site-title">
-            {{ .Site.Title }}
-        </a>
-    </em>
+        <a href="{{ "/" | relLangURL }}" class="site-title">{{ .Site.Title }}</a>
         <nav class="nav-links">
-            <a href="{{ "blog/" | relURL }}">~/blog</a>
-            <a href="{{ "whoami/" | relURL }}">~/whoami</a>
+            <a href="{{ "blog/" | relLangURL }}">Blog</a>
+            <a href="{{ "whoami/" | relLangURL }}">{{ i18n "nav_about" }}</a>
+            {{ with .Translations }}
+                {{ range . }}<a class="lang-switch" href="{{ .RelPermalink }}">{{ .Language.Lang | upper }}</a>{{ end }}
+            {{ end }}
         </nav>
-  </div>
+    </div>
 </header>

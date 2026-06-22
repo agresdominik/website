@@ -1,0 +1,20 @@
+[nav_about]
+other = "Whoami"
+
+[hero_tagline]
+other = "Medical Informatics · Platform & DevOps · Security"
+
+[latest_writing]
+other = "Latest Writing"
+
+[all_posts]
+other = "all posts →"
+
+[date_published]
+other = "Date Published"
+
+[read_time]
+other = "Read time"
+
+[minutes]
+other = "min"
