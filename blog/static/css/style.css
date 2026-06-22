@@ -156,7 +156,9 @@ article { margin-bottom: 2rem; }
   justify-content: space-between;
   align-items: baseline;
   gap: 1rem;
+  flex-wrap: wrap;
 }
+.nav-links { white-space: nowrap; }
 .site-title {
   font-size: 1.25rem;
   font-weight: 600;
@@ -335,6 +337,8 @@ code { font-family: var(--font-mono); }
   main { margin: 2rem 0 3rem; }
   .post-head { flex-direction: column; gap: 0.2rem; }
   .landing-name { font-size: 2.1rem; }
+  .nav-links a { margin-left: 0.9rem; }
+  .nav-links a.lang-switch { margin-left: 0.7rem; padding-left: 0.7rem; }
 }
 
 /* ---------- LLM prompt-injection bait (kept hidden) ---------- */
